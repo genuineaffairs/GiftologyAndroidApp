@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+
+    <RelativeLayout
+        android:id="@+id/toprel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-20dip"
+        android:layout_marginRight="-20dip"
+        android:background="@drawable/sendto" >
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dip"
+            android:background="@drawable/free_button"
+            android:text="Cancel"
+            android:textSize="15dip"
+            android:padding="5dip"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dip"
+            android:background="@drawable/free_button"
+            android:text="Done"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/aboutHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/done"
+            android:layout_toRightOf="@id/cancel"
+            android:gravity="center_horizontal"
+            android:text="About"
+            android:textColor="#FFFFFF"
+            android:textSize="25dip" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/toprel"
+        android:paddingLeft="10dip"
+        android:paddingTop="20dip"
+        android:paddingRight="10dip" >
+
+        <TextView
+            android:id="@+id/textViewdesc"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="top"
+            android:textColor="#5A5A5A"
+            android:textSize="20dip" >
+        </TextView>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+    <!--
+    <LinearLayout
+        android:id="@+id/toplinlay"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/events_sel" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/friends" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/gifts" />
+    </LinearLayout>
+    -->
+
+    <com.unikove.giftology.CustomLinearLayout
+        android:id="@+id/toplinlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <RelativeLayout
+        android:id="@+id/heading_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toplinlay"
+        android:background="@drawable/heading_band"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:text="Events"
+            android:textColor="#FFFFFF"
+            android:textSize="20dip" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/heading_layout"
+        android:background="#FFFFFF" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:focusable="true"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/light_band"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/headingText1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="left"
+                        android:paddingBottom="3dip"
+                        android:paddingTop="3dip"
+                        android:text="TODAY"
+                        android:textColor="#595959"
+                        android:textSize="15dip" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_grid1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout1" >
+
+                    <GridView
+                        android:id="@+id/gridView1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="0dip"
+                        android:numColumns="3"
+                        android:verticalSpacing="4dip" >
+                    </GridView>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/overlapImageCal_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/lin_grid1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="-15dip"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/cal_icon"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/cal_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/light_band"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/headingText2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="left"
+                        android:paddingBottom="3dip"
+                        android:paddingTop="3dip"
+                        android:text="TOMORROW"
+                        android:textColor="#595959"
+                        android:textSize="15dip" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_grid2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout2" >
+
+                    <GridView
+                        android:id="@+id/gridView2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/relativeLayout2"
+                        android:horizontalSpacing="0dip"
+                        android:numColumns="3"
+                        android:verticalSpacing="4dip" >
+                    </GridView>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/overlapImageCal_tomorrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/lin_grid2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="-15dip"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/cal_icon"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/cal_tomorrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:textColor="#000000" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/light_band"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/headingText3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="left"
+                        android:paddingBottom="3dip"
+                        android:paddingTop="3dip"
+                        android:text="THIS WEEK"
+                        android:textColor="#595959"
+                        android:textSize="15dip" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_grid3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout3" >
+
+                    <GridView
+                        android:id="@+id/gridView3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="0dip"
+                        android:numColumns="3"
+                        android:verticalSpacing="4dip" >
+                    </GridView>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/light_band"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/headingText4"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="left"
+                        android:paddingBottom="3dip"
+                        android:paddingTop="3dip"
+                        android:text="THIS MONTH"
+                        android:textColor="#595959"
+                        android:textSize="15dip" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_grid4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout4" >
+
+                    <GridView
+                        android:id="@+id/gridView4"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="0dip"
+                        android:numColumns="3"
+                        android:verticalSpacing="4dip" >
+                    </GridView>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/light_band"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/headingText5"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:gravity="left"
+                        android:paddingBottom="3dip"
+                        android:paddingTop="3dip"
+                        android:text="NEXT MONTH"
+                        android:textColor="#595959"
+                        android:textSize="15dip" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_grid5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relativeLayout5" >
+
+                    <GridView
+                        android:id="@+id/gridView5"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="0dip"
+                        android:numColumns="3"
+                        android:verticalSpacing="4dip" >
+                    </GridView>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/menu_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/heading"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="63dip"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/pop_up_bg"
+            android:orientation="vertical"
+            android:paddingTop="10dip" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout01"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/text01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:text="Refresh"
+                        android:textColor="#000000"
+                        android:textSize="20dip" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout02"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/text02"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:text="About"
+                        android:textColor="#000000"
+                        android:textSize="20dip" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout03"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/line" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/text03"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:text="Settings"
+                        android:textColor="#000000"
+                        android:textSize="20dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <!--
+    <RelativeLayout
+        android:id="@+id/menu_layout"
+        android:layout_width="150dip"
+        android:layout_height="120dip"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/heading"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="25dip"
+        android:background="@drawable/pop_up_bg"
+        android:duplicateParentState="true"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/menu_lin_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/lin1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1" >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dip"
+                     android:layout_marginTop="10dip"
+                    android:background="#BBBBBB" />
+
+                <TextView
+                    android:id="@+id/popup_a"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Refresh"
+                    android:textColor="#000000"
+                    android:textSize="20dip" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1" >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dip"
+                    android:layout_marginTop="10dip"
+                    android:background="#BBBBBB" />
+
+                <TextView
+                    android:id="@+id/popup_b"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="About"
+                    android:textColor="#000000"
+                    android:textSize="20dip" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1" >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dip"
+                     android:layout_marginTop="10dip"
+                    android:background="#BBBBBB" />
+
+                <TextView
+                    android:id="@+id/popup_a"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:text="Settings"
+                    android:textColor="#000000"
+                    android:textSize="20dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    -->
+
+</RelativeLayout>

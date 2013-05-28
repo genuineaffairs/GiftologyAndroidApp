@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+	<com.unikove.giftology.CustomLinearLayout
+	    android:id="@+id/toplinlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"/>
+	<TextView
+	    android:id="@+id/toplabel"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toplinlay"
+        android:text="abcdef"
+        android:gravity="center"
+        android:textSize="20dip"
+        android:textColor="#FFFFFF"
+        android:paddingTop="3dip"
+        android:paddingBottom="3dip"
+        android:background="@drawable/heading_band"/>
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="10dip"
+        android:layout_below="@id/toplabel"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@drawable/photo_bg" >
+
+            <ImageView
+                android:id="@+id/grid_item_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop" >
+            </ImageView>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#868686"
+            android:textSize="20dip"
+            android:gravity="left|center_vertical"
+            android:text="We think you should give ABCD a gift"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/toplinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/lin"
+		android:layout_marginTop="10dip"
+        android:background="@drawable/light_band"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dip"
+            android:text="SEND A NEW GIFT"
+            android:textColor="#595959"
+            android:textSize="15dip" />
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toplinearLayout"
+        android:gravity="center" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:listSelector="#00000000"
+            android:fastScrollEnabled="true" >
+        </ListView>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, HomeScreen!</string>
+    <string name="app_name">Giftology</string>
+    <string name="home_screen_text">The fun and easy way to give gifts to your facebook friends</string>
+
+</resources>

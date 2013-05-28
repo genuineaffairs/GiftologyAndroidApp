@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+	<com.unikove.giftology.CustomLinearLayout
+	    android:id="@+id/toplinlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/heading_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/heading_band"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_option"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Friends"
+            android:textColor="#FFFFFF"
+            android:textSize="20dip" />
+
+        <ImageView
+            android:id="@+id/more_option"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:visibility="gone"
+            android:src="@drawable/more_options" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/search_icon" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:paddingLeft="20dip"
+            android:hint="Search Friends"
+            android:textColor="#595959"
+            android:textSize="20dip"
+            android:layout_toRightOf="@id/search"
+            android:background="@drawable/text_field" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/friends_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fastScrollEnabled="true" 
+         />
+
+</LinearLayout>

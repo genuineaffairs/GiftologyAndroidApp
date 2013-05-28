@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+
+    <RelativeLayout
+        android:id="@+id/toprel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-20dip"
+        android:layout_marginRight="-20dip"
+        android:background="@drawable/sendto" >
+
+        <Button
+            android:id="@+id/cancel_tc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dip"
+            android:background="@drawable/free_button"
+            android:text="Cancel"
+            android:visibility="gone"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/done"
+            android:layout_toRightOf="@id/cancel"
+            android:gravity="center_horizontal"
+            android:text="Terms And Conditions"
+            android:textColor="#FFFFFF"
+            android:textSize="15dip" />
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toprel"
+        android:textColor="#000000"
+        android:padding="10dip"
+        android:gravity="top">
+    </WebView>
+
+</RelativeLayout>

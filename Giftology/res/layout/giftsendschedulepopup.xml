@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+
+    <RelativeLayout
+        android:id="@+id/toprel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-20dip"
+        android:layout_marginRight="-20dip"
+        android:background="@drawable/sendto"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip" >
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dip"
+            android:background="@drawable/free_button"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="Cancel"
+            android:textColor="#FFFFFF"
+            android:textSize="15dip" />
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dip"
+            android:background="@drawable/free_button"
+            android:gravity="center"
+            android:padding="5dip"
+            android:text="Done"
+            android:textColor="#FFFFFF"
+            android:textSize="15dip" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/done"
+            android:layout_toRightOf="@id/cancel"
+            android:gravity="center_horizontal"
+            android:text="Send a gift"
+            android:textColor="#FFFFFF"
+            android:textSize="25dip" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toprel"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/relativea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="5dip"
+                android:text="Send it now"
+                android:textColor="#8E8E8E"
+                android:textSize="20dip" />
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_horizontal"
+               />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="2dip"
+            android:background="#8E8E8E" />
+
+        <RelativeLayout
+            android:id="@+id/relativeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="5dip"
+                android:text="Send it later"
+                android:textColor="#8E8E8E"
+                android:textSize="20dip" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_horizontal" />
+        </RelativeLayout>
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dip"
+            android:visibility="gone"
+             />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="2dip"
+            android:background="#8E8E8E" />
+
+        <RelativeLayout
+            android:id="@+id/relativec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="5dip"
+                android:text="Send on birthday"
+                android:textColor="#8E8E8E"
+                android:textSize="20dip" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_horizontal" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
