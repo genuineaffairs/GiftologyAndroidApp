@@ -5,11 +5,10 @@ import java.util.Stack;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.BaseAdapter;
 
-import com.unikove.giftology.EventsScreen;
-import com.unikove.giftology.FriendsScreen;
+import com.unikove.giftology.activityscreens.EventsScreen;
+import com.unikove.giftology.activityscreens.FriendsScreen;
 
 /*
  * Fetch friends profile pictures request via AsyncTask
@@ -64,12 +63,12 @@ public class FriendsGetProfilePics {
 				queue.push(new ItemPair(uid, url));
 			} else {
 				runningCount++;
-				
+
 				try {
 					new GetProfilePicAsyncTask().execute(uid, url);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-				
+
 				}
 			}
 		}
@@ -82,7 +81,7 @@ public class FriendsGetProfilePics {
 			try {
 				new GetProfilePicAsyncTask().execute(item.uid, item.url);
 			} catch (Exception e) {
-			
+
 			}
 		}
 	}
@@ -90,7 +89,8 @@ public class FriendsGetProfilePics {
 	/*
 	 * Start a AsyncTask to fetch the request
 	 */
-	private class GetProfilePicAsyncTask extends AsyncTask<Object, Void, Bitmap> {
+	private class GetProfilePicAsyncTask extends
+			AsyncTask<Object, Void, Bitmap> {
 		String uid;
 
 		@Override
@@ -107,19 +107,19 @@ public class FriendsGetProfilePics {
 				try {
 					FriendsScreen.callnotify();
 					friendsImages.put(uid, result);
-					//                listener.notifyDataSetChanged();
-					if(EventsScreen.flagScreen.equals("Events")){
+					// listener.notifyDataSetChanged();
+					if (EventsScreen.flagScreen.equals("Events")) {
 						EventsScreen.callnotify();
 					}
-					if(EventsScreen.flagScreen.equals("SendGift")){
-						if(listener!=null){
+					if (EventsScreen.flagScreen.equals("SendGift")) {
+						if (listener != null) {
 							listener.notifyDataSetChanged();
 						}
 					}
 					getNextImage();
 				} catch (Exception e) {
-				//	Log.i("Giftology.Debug",e.toString());
-					
+					// Log.i("Giftology.Debug",e.toString());
+
 				}
 			}
 		}

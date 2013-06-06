@@ -8,8 +8,8 @@ public class Invoker {
 		super();
 		this.theCommand = theCommand;
 	}
-	
-	public String call(String userId){
+
+	public String call(String userId) {
 		return theCommand.execute(userId);
 	}
 }

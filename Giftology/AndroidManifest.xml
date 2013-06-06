@@ -20,7 +20,7 @@
           <receiver android:name="com.unikove.giftology.reciever.NotificationReciever" />
           
         <activity
-            android:name=".HomeScreen"
+            android:name="com.unikove.giftology.activityscreens.HomeScreen"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" 
             android:screenOrientation="portrait">
@@ -30,43 +30,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EventsScreen"
+            android:name="com.unikove.giftology.activityscreens.EventsScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name=".FriendsScreen"
+            android:name="com.unikove.giftology.activityscreens.FriendsScreen"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name=".MyGifts"
+            android:name="com.unikove.giftology.activityscreens.MyGifts"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name=".GiftsToSend"
+            android:name="com.unikove.giftology.activityscreens.GiftsToSend"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name=".GiftsToSendFinal"
+            android:name="com.unikove.giftology.activityscreens.GiftsToSendFinal"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name=".ShareTheNews"
+            android:name="com.unikove.giftology.activityscreens.ShareTheNews"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name=".Settings"
+            android:name="com.unikove.giftology.activityscreens.Settings"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
          <activity
-            android:name=".MyGiftsRedeem"
+            android:name="com.unikove.giftology.activityscreens.MyGiftsRedeem"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>

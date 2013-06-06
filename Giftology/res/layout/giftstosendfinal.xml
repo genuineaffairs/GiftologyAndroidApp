@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
                 android:gravity="center_horizontal"
-                android:text="Your gift is ready to be send"
+                android:text="Your gift is ready to be sent"
                 android:textColor="#9E4848"
                 android:textSize="20dip" />
 
@@ -75,7 +75,7 @@
                         android:id="@+id/image"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:scaleType="fitXY"
+                        android:scaleType="fitCenter"
                         android:src="@drawable/big_image_bg" />
 
                     <ProgressBar
@@ -90,6 +90,8 @@
             </RelativeLayout>
         </RelativeLayout>
 
+        
+        
         <RelativeLayout
             android:id="@+id/relLayout02"
             android:layout_width="fill_parent"
@@ -99,6 +101,8 @@
             android:layout_weight="3"
             android:orientation="vertical" >
 
+            
+            
             <RelativeLayout
                 android:id="@+id/linearLayoutTermsCondition"
                 android:layout_width="fill_parent"
@@ -139,6 +143,7 @@
                     android:src="@drawable/down_aro" />
             </RelativeLayout>
 
+            
             <LinearLayout
                 android:id="@+id/linearLayoutWarning"
                 android:layout_width="wrap_content"
@@ -215,6 +220,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="25dip" />
             </LinearLayout>
+            
         </RelativeLayout>
     </LinearLayout>
 
