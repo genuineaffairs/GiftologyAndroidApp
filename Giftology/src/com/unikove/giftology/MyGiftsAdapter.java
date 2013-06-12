@@ -1,5 +1,6 @@
 package com.unikove.giftology;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.json.JSONException;
@@ -7,11 +8,13 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,9 +26,9 @@ import android.widget.Toast;
 
 import com.unikove.fb.Utility;
 import com.unikove.giftology.activityscreens.MyGiftsRedeem;
-import com.unikove.giftology.connectivity.ConnectionUtility;
 import com.unikove.giftology.data.MyGiftsDetail;
 import com.unikove.giftology.data.MyGiftsRedeemDetail;
+import com.unikove.giftology.util.ConnectionUtility;
 import com.unikove.giftology.util.GiftologyUtility;
 
 public class MyGiftsAdapter extends ArrayAdapter<MyGiftsDetail> {
@@ -61,7 +64,7 @@ public class MyGiftsAdapter extends ArrayAdapter<MyGiftsDetail> {
 		final MyGiftsDetail gd = al.get(position);
 		name.setText(gd.getName());
 		price.setText(gd.getPRICE());
-		expiry.setText("Expiry " + gd.getEXPIRY());
+		expiry.setText("Expires " + gd.getEXPIRY());
 		if (!(gd.getBITMAP() == null)) {
 			Drawable d = new BitmapDrawable(context.getResources(),
 					gd.getBITMAP());
@@ -91,6 +94,7 @@ public class MyGiftsAdapter extends ArrayAdapter<MyGiftsDetail> {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pd = ProgressDialog.show(context, "", "Loading...", true, false);
+			enableHttpCaching(context);
 		}
 
 		@Override
@@ -164,7 +168,7 @@ public class MyGiftsAdapter extends ArrayAdapter<MyGiftsDetail> {
 			 * StringBuilder sb = new StringBuilder(); String line; while ((line
 			 * = br.readLine()) != null) { sb.append(line); }
 			 */
-			str = ConnectionUtility.getGiftologyDataGetKeyLess(url).toString();
+			str = new ConnectionUtility().getGiftologyDataGetKeyLess(url).toString();
 
 			fillArrayList(str);
 			// Log.i("Giftology.Debug","Before fillarraylist "+str);
@@ -220,4 +224,27 @@ public class MyGiftsAdapter extends ArrayAdapter<MyGiftsDetail> {
 	 * (wifi.isConnected()) { return true; } else if (mobile.isConnected()) {
 	 * return true; } return false; }
 	 */
+	
+	private void enableHttpCaching(Context context) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+			try {
+				File httpCacheDir = new File(context
+						.getCacheDir(), "httpgifto");
+				long httpCacheSize = 15 * 1024 * 1024; // 15 MiB
+				android.net.http.HttpResponseCache.install(httpCacheDir, httpCacheSize);
+
+			} catch (java.io.IOException e) {
+
+			}
+		} else {
+			File httpCacheDir = new File(context.getCacheDir(),
+					"httpgifto");
+			try {
+				com.integralblue.httpresponsecache.HttpResponseCache.install(
+						httpCacheDir, 15 * 1024 * 1024);
+			} catch (java.io.IOException e) {
+				//Log.i(GiftologyUtility.TAG,e.toString());
+			}
+		}
+	}
 }

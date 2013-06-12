@@ -11,7 +11,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +25,8 @@ import android.widget.Toast;
 
 import com.unikove.giftology.activityscreens.GiftsToSendFinal;
 import com.unikove.giftology.activityscreens.HomeScreen;
-import com.unikove.giftology.connectivity.ConnectionUtility;
 import com.unikove.giftology.data.GiftsToSendDetail;
+import com.unikove.giftology.util.ConnectionUtility;
 
 public class GiftsToSendAdapter extends ArrayAdapter<GiftsToSendDetail> {
 	private final Activity context;

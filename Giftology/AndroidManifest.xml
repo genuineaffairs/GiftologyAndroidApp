@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unikove.giftology"
-    android:versionCode="2"
-    android:versionName="2.1" 
+    android:versionCode="3"
+    android:versionName="3.1" 
   >
 
     <uses-sdk android:minSdkVersion="7"/>
@@ -67,6 +67,11 @@
         </activity>
          <activity
             android:name="com.unikove.giftology.activityscreens.MyGiftsRedeem"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+         <activity
+            android:name="com.unikove.giftology.activityscreens.Preference"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>

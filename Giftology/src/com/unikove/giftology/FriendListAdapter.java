@@ -21,8 +21,8 @@ import com.unikove.fb.Utility;
 import com.unikove.giftology.activityscreens.EventsScreen;
 import com.unikove.giftology.activityscreens.FriendsScreen;
 import com.unikove.giftology.activityscreens.GiftsToSend;
-import com.unikove.giftology.connectivity.ConnectionUtility;
 import com.unikove.giftology.data.FriendDetail;
+import com.unikove.giftology.util.ConnectionUtility;
 
 public class FriendListAdapter extends ArrayAdapter<FriendDetail> {
 	private final Activity context;

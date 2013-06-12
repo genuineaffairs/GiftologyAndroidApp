@@ -32,8 +32,8 @@ import com.unikove.giftology.activityscreens.EventsScreen;
 import com.unikove.giftology.activityscreens.GiftsToSend;
 import com.unikove.giftology.activityscreens.HomeScreen;
 import com.unikove.giftology.activityscreens.ShareTheNews;
-import com.unikove.giftology.connectivity.ConnectionUtility;
 import com.unikove.giftology.data.GiftsToSendDetail;
+import com.unikove.giftology.util.ConnectionUtility;
 import com.unikove.giftology.util.GiftologyUtility;
 
 public class GiftsToSendFinalPrev extends Activity {
@@ -268,7 +268,7 @@ public class GiftsToSendFinalPrev extends Activity {
 				 * StringBuilder sb = new StringBuilder(); String line; while
 				 * ((line = br.readLine()) != null) { sb.append(line); }
 				 */
-				str = ConnectionUtility.getGiftologyDataGet(url).toString();// {"gifts":{"result":"1"}}
+				str = new ConnectionUtility().getGiftologyDataGet(url).toString();// {"gifts":{"result":"1"}}
 				if (str.contains("1")) {
 					giftsend = "1";
 				}

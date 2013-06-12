@@ -1,9 +1,6 @@
 package com.unikove.giftology.reciever;
 
-import java.io.IOException;
 import java.util.Calendar;
-
-import org.apache.http.HttpEntity;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -14,7 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
-import android.util.Log;
+import android.preference.PreferenceManager;
 
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.Facebook;
@@ -29,9 +26,6 @@ import com.unikove.fb.SessionStore;
 import com.unikove.fb.Utility;
 import com.unikove.giftology.activityscreens.EventsScreen;
 import com.unikove.giftology.activityscreens.HomeScreen;
-import com.unikove.giftology.caching.CachingUtility;
-import com.unikove.giftology.connectivity.ConnectionUtility;
-import com.unikove.giftology.util.GiftologyUtility;
 
 public class NotificationReciever extends BroadcastReceiver {
 
@@ -52,7 +46,7 @@ public class NotificationReciever extends BroadcastReceiver {
 	private final String FRIENDJOINED = " has joined Giftology.Give him a gift!";
 	private final String BIRTHDAY = " has birthday today.";
 	private final String HASSENTGIFT = " has sent you a gift!";
-	private static boolean BIRTHDAYGIFTNOTGIVEN = true;
+	private static boolean BIRTHDAYGIFTNOTGIVEN = false;
 	private static Calendar lastDayDate = Calendar.getInstance();
 	private static final String TOKEN = "access_token";
 	private static final String EXPIRES = "expires_in";
@@ -70,40 +64,38 @@ public class NotificationReciever extends BroadcastReceiver {
 				.getSharedPreferences(KEY, Context.MODE_PRIVATE);
 		facebook.setAccessToken(sharedPreferences.getString(TOKEN, null));
 		facebook.setAccessExpires(sharedPreferences.getLong(EXPIRES, 0));
+		
 		return facebook.isSessionValid();
 	}
 
-	@Override
-	public void onReceive(Context arg0, Intent arg1) {
-
-		String message;
-
+	private void checkFacebookExists(Context context)
+	{
 		if (Utility.mFacebook == null) {
 			Utility.mFacebook = new Facebook(HomeScreen.APP_ID); // Create the
-																	// Facebook
-																	// Object
-																	// using the
-																	// app id.
+																
 			Utility.mAsyncRunner = new AsyncFacebookRunner(Utility.mFacebook);
-			SessionStore.restore(Utility.mFacebook, arg0);
-			restoreCredentials(Utility.mFacebook, arg0);
+			SessionStore.restore(Utility.mFacebook, context);
+			restoreCredentials(Utility.mFacebook, context);
 		}
 
-		countForFriend++;
-		Calendar currentDate = Calendar.getInstance();
+	}
 
-		notificationPreferences = arg0.getApplicationContext()
+	private void doBirthdayNotificationPreProcessing(Context context)
+	{
+		//get current date
+				Calendar currentDate = Calendar.getInstance();
+		notificationPreferences = context.getApplicationContext()
 				.getSharedPreferences(NKEY, Context.MODE_PRIVATE);
 		if (notificationPreferences != null) {
+			
 			BIRTHDAYGIFTNOTGIVEN = notificationPreferences.getBoolean(
 					BIRTHDAYGIFTNOTGIVENKEY, true);
 
 		}
 
-		if (currentDate.getTime().getHours() == 0
-				&& currentDate.getTime().getMinutes() == 4) {
+		if (((currentDate.getTime().getHours() == 0)&& (currentDate.getTime().getMinutes() >= 4)&& (!BIRTHDAYGIFTNOTGIVEN)))  {
 			BIRTHDAYGIFTNOTGIVEN = true;
-			Editor editor = arg0.getApplicationContext()
+			Editor editor = context.getApplicationContext()
 					.getSharedPreferences(NKEY, Context.MODE_PRIVATE).edit();
 			editor.putBoolean(BIRTHDAYGIFTNOTGIVENKEY, true);
 			editor.commit();
@@ -112,55 +104,116 @@ public class NotificationReciever extends BroadcastReceiver {
 		if (currentDate.getTime().getHours() == 18
 				&& currentDate.getTime().getMinutes() == 0) {
 			BIRTHDAYGIFTNOTGIVEN = true;
-			Editor editor = arg0.getApplicationContext()
+			Editor editor = context.getApplicationContext()
 					.getSharedPreferences(NKEY, Context.MODE_PRIVATE).edit();
 			editor.putBoolean(BIRTHDAYGIFTNOTGIVENKEY, true);
 			editor.commit();
 		}
+	}
+	
+	public void doBirthdayNotification(Context context)
+	{
+		SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        Boolean bithday_notification = sharedPrefs.getBoolean("bithday_notification",true);
+      if(bithday_notification){
+        String message;
+		message = runCommand(context, EVENT);
+		if (!(message.equalsIgnoreCase(lastEventMessage))) {
+		if (!message.equalsIgnoreCase(EMPTYSTRING)) {
+			lastEventMessage = message;
+			String sendmessage;
+			if (message.equalsIgnoreCase(YOURFRIENDS)) {
+				sendmessage = message + BIRTHDAYS;
+			} else {
+				sendmessage = message + BIRTHDAY;
+			}
+			makeNotifications(sendmessage, context);
+			BIRTHDAYGIFTNOTGIVEN = false;
+		}
+		}
+      }
+	}
+	
+	public void friendNotification(Context context)
+	{
+		SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+		Boolean friend_notification = sharedPrefs.getBoolean("friend_notification",true);
+        
+		String message;
+		countForFriend = 0;
+		if(friend_notification){
+		message = runCommand(context, FRIEND);
+
+		if (!(message.equalsIgnoreCase(lastFriendMessage))) {
+			if (!message.equalsIgnoreCase(EMPTYSTRING)) {
+				lastFriendMessage = message;
+				String sendmessage = message + FRIENDJOINED;
+				if (FIRSTFRIENDTIME) {
+
+					makeNotifications(sendmessage, context);
+				}
+				
+				FIRSTFRIENDTIME = true;
+			}
+		}
+		}
+	}
+	
+	public void giftNotification(Context context)
+	{
+		SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+		Boolean my_gift = sharedPrefs.getBoolean("my_gift",true);
+        
+		String message;
+		if(my_gift){
+		message = runCommand(context, GIFT);
+		if (!(message.equalsIgnoreCase(lastGiftMessage))) {
+			if (!message.equalsIgnoreCase(EMPTYSTRING)) {
+				lastGiftMessage = message;
+				String sendmessage = message.split(";")[1]
+						+ HASSENTGIFT;
+				if (FIRSTIME) {
+
+					makeNotifications(sendmessage, context);
+				}
+				FIRSTIME = true;
+
+			}
+		}
+
+		}
+	}
+
+	@Override
+	public void onReceive(Context arg0, Intent arg1) {
+		//message which goes to notification
+		String message;
+		//check if facebook object exists? if not recreate it
+		
+		checkFacebookExists(arg0);
+		
+				//count for friend to reach 30 ie check every 30 minutes for new friend joining
+		countForFriend++;
+		
+		
+		//notification preference to store data related to notification , stores if birthdays are given
+		
+		doBirthdayNotificationPreProcessing(arg0);
+		
 
 		if (isInternetAvailable(arg0)) {
-			if (lastDayDate.before(currentDate)) {
+		
 				if (BIRTHDAYGIFTNOTGIVEN) {
-
-					message = runCommand(arg0, EVENT);
-					if (!message.equalsIgnoreCase(EMPTYSTRING)) {
-						lastEventMessage = message;
-						String sendmessage;
-						if (message.equalsIgnoreCase(YOURFRIENDS)) {
-							sendmessage = message + BIRTHDAYS;
-						} else {
-							sendmessage = message + BIRTHDAY;
-						}
-						makeNotifications(sendmessage, arg0);
-
-					}
-					lastDayDate = currentDate;
-					BIRTHDAYGIFTNOTGIVEN = false;
-					Editor editor = arg0.getApplicationContext()
-							.getSharedPreferences(NKEY, Context.MODE_PRIVATE)
-							.edit();
-					editor.putBoolean(BIRTHDAYGIFTNOTGIVENKEY, false);
-					editor.commit();
+					doBirthdayNotification(arg0);
 
 				}
-			}
+			
 
 			if (countForFriend == DURATIONFORFRIENDCHECK) {
-				countForFriend = 0;
-				message = runCommand(arg0, FRIEND);
-
-				if (!(message.equalsIgnoreCase(lastFriendMessage))) {
-					if (!message.equalsIgnoreCase(EMPTYSTRING)) {
-						lastFriendMessage = message;
-						String sendmessage = message + FRIENDJOINED;
-						if (FIRSTFRIENDTIME) {
-
-							makeNotifications(sendmessage, arg0);
-						}
-						
-						FIRSTFRIENDTIME = true;
-					}
-				}
+				friendNotification(arg0);
 			}
 			/*
 			 * if (countForEvent == DURATIONFOREVENTCHECK) {
@@ -176,20 +229,7 @@ public class NotificationReciever extends BroadcastReceiver {
 			 * } } }
 			 */
 			if (countForFriend != 0) {
-				message = runCommand(arg0, GIFT);
-				if (!(message.equalsIgnoreCase(lastGiftMessage))) {
-					if (!message.equalsIgnoreCase(EMPTYSTRING)) {
-						lastGiftMessage = message;
-						String sendmessage = message.split(";")[1]
-								+ HASSENTGIFT;
-						if (FIRSTIME) {
-
-							makeNotifications(sendmessage, arg0);
-						}
-						FIRSTIME = true;
-
-					}
-				}
+				giftNotification(arg0);
 			}
 		}
 	}
@@ -263,7 +303,7 @@ public class NotificationReciever extends BroadcastReceiver {
 
 	private void makeNotifications(String message, Context context) {
 		try {
-			Log.i("Giftology.Notification", message);
+		//	Log.i("Giftology.Notification", message);
 			Intent intent = new Intent(context, EventsScreen.class);
 			PendingIntent pIntent = PendingIntent.getActivity(context, 0,
 					intent, 0);

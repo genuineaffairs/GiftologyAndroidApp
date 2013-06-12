@@ -1,14 +1,10 @@
 package com.giftology.notifications.service_rest;
 
-import java.io.IOException;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-import android.util.Log;
-
-import com.unikove.giftology.connectivity.ConnectionUtility;
+import com.unikove.giftology.util.ConnectionUtility;
 import com.unikove.giftology.util.GiftologyUtility;
 
 public class GiftologyRESTConnect implements RESTConnect {
@@ -47,11 +43,7 @@ public class GiftologyRESTConnect implements RESTConnect {
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			return EMPTYSTRING;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			return EMPTYSTRING;
-		}
-
+		} 
 		return processCelebrationJson(json);
 	}
 
@@ -98,10 +90,7 @@ public class GiftologyRESTConnect implements RESTConnect {
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			return EMPTYSTRING;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			return EMPTYSTRING;
-		}
+		} 
 		return processFriendJson(json);
 	}
 
@@ -141,10 +130,7 @@ public class GiftologyRESTConnect implements RESTConnect {
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			return EMPTYSTRING;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			return EMPTYSTRING;
-		}
+		} 
 
 		return processGiftJson(json);
 	}
@@ -153,7 +139,7 @@ public class GiftologyRESTConnect implements RESTConnect {
 		try {
 
 			Object object = JSONValue.parse(json);
-			Log.i("Giftology.Notification", json);
+			//Log.i("Giftology.Notification", json);
 			JSONObject jsonObject = (JSONObject) object;
 			JSONObject subjsonObject = (JSONObject) jsonObject.get(GIFT);
 
@@ -170,20 +156,23 @@ public class GiftologyRESTConnect implements RESTConnect {
 		}
 
 		return EMPTYSTRING;
+		
 	}
 
-	private String connectRest(String connectURL) throws IllegalStateException,
-			IOException {
-		
-
+	private String connectRest(String connectURL)  
+		 {
+	
 		String result="";
 		try {
-			result = ConnectionUtility.getGiftologyDataGetKeyLess(connectURL).toString();
+			if(ConnectionUtility.isConnectedToServer(GiftologyUtility.GIFTOLOGYSERVER));
+			{
+			result = new ConnectionUtility().getGiftologyDataGetKeyLessforNotification(connectURL).toString();
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 		}
-		Log.i("Giftology.Notification", "In dfd" + result);
+		//Log.i("Giftology.Notification", "In dfd" + result);
 		return result;
 	}
 

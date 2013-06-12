@@ -72,12 +72,22 @@
                     android:id="@+id/otherrelative"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
+                        
+                    <ImageView
+                        android:id="@+id/vendorimage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:layout_centerInParent="true"
+                      />
+   
 
                     <ImageView
                         android:id="@+id/image"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:scaleType="centerCrop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:layout_centerInParent="true"
                         android:src="@drawable/big_image_bg" />
 
                     <ProgressBar
@@ -190,19 +200,6 @@
                     android:paddingTop="8dip"
                     android:src="@drawable/down_aro" />
             </RelativeLayout>
-
-            <Button
-                android:id="@+id/message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="happy birthday dude..."
-                android:layout_marginTop="10dip"
-                android:background="@drawable/msgbox"
-                android:layout_centerHorizontal="true"
-                android:textColor="#595959"
-                android:gravity="center"
-                android:padding="10dip"
-                android:layout_below="@id/redeeminstructions" />
 
         </RelativeLayout>
     </LinearLayout>

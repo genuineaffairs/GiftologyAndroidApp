@@ -4,5 +4,17 @@
     <string name="hello">Hello World, HomeScreen!</string>
     <string name="app_name">Giftology</string>
     <string name="home_screen_text">The fun and easy way to give gifts to your facebook friends</string>
-    
+    <string name="my_gift_summary">We will let you know when you receive a gift.</string>
+	<string name="pref_update_setting">Settings Notifications</string>
+	<string name="my_gift">My Gifts</string>
+
+	
+	<string name="bithday_notification">Birthdays and other friends events</string> 
+	<string name="birthday_other_event_summery">We will notify you when your friends have their birthday.</string>       
+    <string name="menu_settings">Settings</string>
+  
+    <string name="friend_notification">Friend Joins Giftology</string> 
+	<string name="friend_summery">We will notify when a friend joins giftology.</string>       
+    <string name="friend_setting"> Interacted Settings Notifications</string>
+     
 </resources>
